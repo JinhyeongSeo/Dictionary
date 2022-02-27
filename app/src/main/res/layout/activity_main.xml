@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1400px"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="검색어를 입력하세요." />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#999999"
+            android:dividerHeight="1dp">
+        </ListView>
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="검색하기"
+            android:textSize="20dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/btn_sentence"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:layout_weight="1"
+            android:background="#CE93D8"
+            android:gravity="center"
+            android:text="문장"
+            android:textColor="#fff"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/btn_word"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:layout_weight="1"
+            android:background="#AB47BC"
+            android:gravity="center"
+            android:text="단어"
+            android:textColor="#fff"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+</LinearLayout>
