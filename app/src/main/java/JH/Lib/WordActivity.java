@@ -6,6 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +33,31 @@ public class WordActivity extends AppCompatActivity {
 
         listItems = new ArrayList<>();
 
-        listItems.add(new ListItem("apple","과일의 한 종류이다. 달다"));
-        listItems.add(new ListItem("kiwi","과일의 한 종류이다. 시다"));
-        listItems.add(new ListItem("banana","과일의 한 종류이다. 물렁히다."));
+        String json = null;
+
+        try {
+            InputStream is = getAssets().open("dictionary.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray array = jsonObject.getJSONArray("word");
+
+            for(int i = 0; i < array.length(); i++) {
+                JSONObject o = array.getJSONObject(i);
+                ListItem item = new ListItem(
+                        o.getString("title"),
+                        o.getString("desc")
+                );
+
+                listItems.add(item);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         adapter = new MyAdapter(listItems, this);
         recyclerView.setAdapter(adapter);

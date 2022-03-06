@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 // import android.support.v7.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.view.View;
 import android.widget.TextView;
 import android.os.Handler;
@@ -18,10 +19,17 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ScheduledExecutorService;
+
+import JH.Lib.mRecyclerView.ListItem;
+import JH.Lib.mRecyclerView.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editSearch;
     private SearchAdapter adapter;
     private ArrayList<String> arraylist;
+    private List<ListItem> listItems = null;
 
     TextView btn_sentence;
     TextView btn_word;
@@ -79,8 +88,37 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         list = new ArrayList<String>();
+        if (null == listItems) {
+            listItems = new ArrayList<ListItem>();
+        }
+        String json = null;
+        try {
+            InputStream is = getAssets().open("dictionary.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
 
-        settingList();
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray array = jsonObject.getJSONArray("alldic");
+
+            for(int i = 0; i < array.length(); i++) {
+
+                JSONObject o = array.getJSONObject(i);
+                ListItem item = new ListItem(
+                        o.getString("title"),
+                        o.getString("desc")
+                );
+                listItems.add(item);
+                list.add(item.getList_title());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.printStackTrace(System.err);
+        }
+
+
 
         arraylist = new ArrayList<String>();
         arraylist.addAll(list);
@@ -126,12 +164,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         adapter.notifyDataSetChanged();
-    }
-
-    private void settingList(){
-        list.add("apple");
-        list.add("banana");
-        list.add("kiwi");
     }
 
 
