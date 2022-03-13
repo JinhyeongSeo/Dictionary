@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.12291666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_password.xml" value="0.12604166666666666" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.1125" />
         <entry key="app/src/main/res/layout/activity_sentence.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/activity_word.xml" value="0.12552083333333333" />

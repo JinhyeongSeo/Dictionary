@@ -1,10 +1,16 @@
 package JH.Lib.mRecyclerView;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import JH.Lib.R;
 
+import java.util.List;
+
+import JH.Lib.R;
+import JH.Lib.SearchAdapter;
 
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -13,6 +19,8 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public TextView list_desc;
 
     ItemClickListener itemClickListener;
+
+
 
     public ViewHolder(View itemView) {
         super(itemView);

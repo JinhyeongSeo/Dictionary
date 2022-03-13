@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import JH.Lib.DetailActivity;
 import JH.Lib.R;
+import JH.Lib.SearchAdapter;
 
 public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
 
@@ -49,7 +51,6 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                // Toast.makeText(context, list_title, Toast.LENGTH_SHORT).show();
                 openDetailActivity(list_title, list_desc);
             }
         });

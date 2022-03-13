@@ -6,8 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
+import JH.Lib.R;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
+
+import JH.Lib.mRecyclerView.ItemClickListener;
 
 public class SearchAdapter extends BaseAdapter {
 
@@ -23,6 +29,7 @@ public class SearchAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
+
         return list.size();
     }
 
@@ -54,8 +61,9 @@ public class SearchAdapter extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder{
+    public class ViewHolder {
         public TextView label;
-    }
 
+    }
 }
+
